@@ -30,7 +30,7 @@ public class task1 {
     public static final int xBoard = 10;
     public static final int yBoard = 12;
     public static double d;
-    public  static ArrayList<Coordinate>coordinates2 = new ArrayList<>();
+    public static ArrayList<Coordinate> coordinates2 = new ArrayList<>();
     public static int howManyPoints = 45;
     public static double s;
     public static ArrayList<Coordinate> coordinate = new ArrayList<>();
@@ -47,13 +47,14 @@ public class task1 {
             coordinate.add(c1);
         }
         tester.countMaxDestination();
-        coordinates2.add(new Coordinate (4.0, 11.0));
-        coordinates2.add(new Coordinate (3.0, 7.0));
-        coordinates2.add(new Coordinate (6.0, 7.0));
-        coordinates2.add(new Coordinate (8.0, 11.0));
-        coordinates2.add(new Coordinate (4.0, 4.0));
-        coordinates2.add(new Coordinate (8.0, 4.0));
+        coordinates2.add(new Coordinate(4.0, 11.0));
+        coordinates2.add(new Coordinate(3.0, 7.0));
+        coordinates2.add(new Coordinate(6.0, 7.0));
+        coordinates2.add(new Coordinate(8.0, 11.0));
+        coordinates2.add(new Coordinate(4.0, 4.0));
+        coordinates2.add(new Coordinate(8.0, 4.0));
         tester.square();
+        tester.coupleOfMostRemotedPoints();
     }
 
     public void countMaxDestination() throws Exception {
@@ -99,6 +100,26 @@ public class task1 {
         }
         System.out.println(squares.size());
     }
-    
+
+    public void coupleOfMostRemotedPoints() {
+        double maxLength = 0;
+       Coordinate firstCoordinate = null;
+       Coordinate secondCoordinate = null;
+        for (int i = 0; i < coordinates2.size(); i++) {
+            for (int j = 0; j < coordinates2.size(); j++) {
+                double length = Math.sqrt(Math.pow((coordinates2.get(i).getX() - coordinates2.get(j).getX()), 2) + Math.pow((coordinates2.get(i).getY() - coordinates2.get(j).getY()), 2));
+                if (length > maxLength) {
+                    maxLength = length;
+                    firstCoordinate = coordinates2.get(i);
+                    secondCoordinate = coordinates2.get(j);
+
+                }
+            }
+        }
+        System.out.println("The couple of most remoted points: "+ "("+firstCoordinate.getX() +"; "+ firstCoordinate.getY() +")"+ "("+secondCoordinate.getX() +";"+secondCoordinate.getY()+")" );
+    }
+    public void sort(){
+        
+    }
 }
 
